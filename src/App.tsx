@@ -1,9 +1,7 @@
-function App() {
+export function App() {
   return (
     <>
-      <h1>Ignite Timer</h1>
+      <h1>App Ignite Timer</h1>
     </>
   )
 }
-
-export default App
