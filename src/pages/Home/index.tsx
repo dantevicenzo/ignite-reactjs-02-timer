@@ -79,7 +79,7 @@ export function Home() {
       }),
     )
     setCurrentCycleId(null)
-  }, [cycles, currentCycleId])
+  }, [currentCycleId])
 
   useEffect(() => {
     let currentInterval: number
