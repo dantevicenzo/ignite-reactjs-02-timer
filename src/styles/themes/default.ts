@@ -5,7 +5,7 @@ export const defaultTheme = {
     greenLight: '#00B37E',
 
     redDark: '#7A1921',
-    red: '#F03847',
+    red: '#AB222E',
 
     grey1: '#121214', // background
     grey2: '#202024', // elements
