@@ -72,7 +72,7 @@ export const Number = styled(CowntdownItem)`
 export const Separator = styled(CowntdownItem)`
   color: ${(props) => props.theme.color.green};
 `
-const Button = styled.button`
+const BaseButton = styled.button`
   width: 100%;
 
   font-size: 1rem;
@@ -96,7 +96,7 @@ const Button = styled.button`
   }
 `
 
-export const StartButton = styled(Button)`
+export const StartButton = styled(BaseButton)`
   background-color: ${(props) => props.theme.color.green};
 
   &:hover:enabled {
@@ -104,7 +104,7 @@ export const StartButton = styled(Button)`
     cursor: pointer;
   }
 `
-export const InterruptButton = styled(Button)`
+export const InterruptButton = styled(BaseButton)`
   background-color: ${(props) => props.theme.color.red};
 
   &:hover:enabled {

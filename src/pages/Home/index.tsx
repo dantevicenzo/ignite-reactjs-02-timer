@@ -13,7 +13,7 @@ import {
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import zod from 'zod'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { differenceInSeconds } from 'date-fns'
 
 const newCycleFormValidationSchema = zod.object({
@@ -68,14 +68,35 @@ export function Home() {
   const watchTask = watch('task', '')
   const isTaskInputEmpty = !watchTask.trim()
 
+  const completeCurrentCycle = useCallback(() => {
+    setCycles(
+      cycles.map((cycle) => {
+        if (cycle.id === currentCycleId) {
+          return { ...cycle, endDate: new Date(), status: 'completed' }
+        } else {
+          return cycle
+        }
+      }),
+    )
+    setCurrentCycleId(null)
+  }, [cycles, currentCycleId])
+
   useEffect(() => {
     let currentInterval: number
 
     if (currentCycle) {
       currentInterval = setInterval(() => {
-        setAmountSecondsPassed(
-          differenceInSeconds(new Date(), currentCycle.startDate),
+        const secondsPassedAmount = differenceInSeconds(
+          new Date(),
+          currentCycle.startDate,
         )
+        const totalSecondsAmount = currentCycle.minutesAmount * 60
+
+        if (secondsPassedAmount < totalSecondsAmount) {
+          setAmountSecondsPassed(secondsPassedAmount)
+        } else {
+          completeCurrentCycle()
+        }
       }, 1000)
     }
 
@@ -83,7 +104,7 @@ export function Home() {
       clearInterval(currentInterval)
       setAmountSecondsPassed(0)
     }
-  }, [currentCycle])
+  }, [currentCycle, completeCurrentCycle])
 
   useEffect(() => {
     if (amountSecondsPassed > 0) {
@@ -112,22 +133,17 @@ export function Home() {
   }
 
   function interruptCurrentCycle() {
-    const interruptedDate = new Date()
     setCycles(
       cycles.map((cycle) => {
         if (cycle.id === currentCycleId) {
-          cycle.endDate = interruptedDate
-          cycle.status = 'interrupted'
+          return { ...cycle, endDate: new Date(), status: 'interrupted' }
+        } else {
+          return cycle
         }
-
-        return cycle
       }),
     )
     setCurrentCycleId(null)
-    setAmountSecondsPassed(0)
   }
-
-  console.log(cycles)
 
   return (
     <HomeContainer>
