@@ -14,6 +14,7 @@ export const defaultTheme = {
     grey5: '#8D8D99', // label
     grey6: '#C4C4CC', // text
     grey7: '#E1E1E6', // title
+    grey8: '#29292E',
 
     white: '#FFFFFF',
   },

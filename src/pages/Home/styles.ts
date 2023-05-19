@@ -55,7 +55,7 @@ export const Number = styled(CowntdownItem)`
   width: 8rem;
 
   color: ${(props) => props.theme.color.grey7};
-  background-color: #29292e;
+  background-color: ${(props) => props.theme.color.grey8};
 
   border-radius: ${(props) => props.theme.borderRadius};
 `
