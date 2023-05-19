@@ -17,6 +17,10 @@ export const defaultTheme = {
     grey8: '#29292E',
 
     white: '#FFFFFF',
+
+    inProgress: '#FBA94C',
+    interrupted: '#AB222E',
+    completed: '#04D361',
   },
 
   borderRadius: '8px',

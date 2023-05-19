@@ -1,9 +1,9 @@
-import { HistoryContainer, StyledTable } from './styles'
+import { HistoryContainer, Status, StyledTable } from './styles'
 
 export function History() {
   return (
     <HistoryContainer>
-      <h3>Meu histórico</h3>
+      <h1>Meu histórico</h1>
       <StyledTable>
         <thead>
           <tr>
@@ -18,43 +18,57 @@ export function History() {
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="inProgress">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="completed">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="interrupted">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="inProgress">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="inProgress">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="inProgress">Em andamento</Status>
+            </td>
           </tr>
           <tr>
             <td>Conserto de débitos técnicos </td>
             <td>25 minutos</td>
             <td>Há cerca de 2 meses</td>
-            <td>Em andamento</td>
+            <td>
+              <Status statusColor="inProgress">Em andamento</Status>
+            </td>
           </tr>
         </tbody>
       </StyledTable>

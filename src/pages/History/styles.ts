@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const HistoryContainer = styled.div`
   margin: 3.125rem 6rem;
 
-  h3 {
+  h1 {
     font-size: 1.5rem;
   }
 `
@@ -39,14 +39,22 @@ export const StyledTable = styled.table`
       width: 50%;
     }
   }
+`
 
-  tr td:last-child::before {
+interface StatusProps {
+  statusColor: 'inProgress' | 'interrupted' | 'completed'
+}
+
+export const Status = styled.span<StatusProps>`
+  display: flex;
+  align-items: center;
+
+  &::before {
     content: '';
-    display: inline-block;
     width: 0.5rem;
     height: 0.5rem;
     border-radius: 50%;
     margin-right: 0.5rem;
-    background-color: #fba94c;
+    background-color: ${(props) => props.theme.color[props.statusColor]};
   }
 `
