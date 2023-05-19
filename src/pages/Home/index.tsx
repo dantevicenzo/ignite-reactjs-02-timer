@@ -69,8 +69,8 @@ export function Home() {
   const isTaskInputEmpty = !watchTask.trim()
 
   const completeCurrentCycle = useCallback(() => {
-    setCycles(
-      cycles.map((cycle) => {
+    setCycles((state) =>
+      state.map((cycle) => {
         if (cycle.id === currentCycleId) {
           return { ...cycle, endDate: new Date(), status: 'completed' }
         } else {
@@ -133,8 +133,8 @@ export function Home() {
   }
 
   function interruptCurrentCycle() {
-    setCycles(
-      cycles.map((cycle) => {
+    setCycles((state) =>
+      state.map((cycle) => {
         if (cycle.id === currentCycleId) {
           return { ...cycle, endDate: new Date(), status: 'interrupted' }
         } else {
