@@ -1,6 +1,10 @@
+import { useContext } from 'react'
 import { HistoryContainer, Status, StyledTable } from './styles'
+import { CyclesContext } from '../../contexts/CyclesContext'
 
 export function History() {
+  const { cycles } = useContext(CyclesContext)
+
   return (
     <HistoryContainer>
       <h1>Meu histórico</h1>
@@ -14,62 +18,24 @@ export function History() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="inProgress">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="completed">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="interrupted">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="inProgress">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="inProgress">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="inProgress">Em andamento</Status>
-            </td>
-          </tr>
-          <tr>
-            <td>Conserto de débitos técnicos </td>
-            <td>25 minutos</td>
-            <td>Há cerca de 2 meses</td>
-            <td>
-              <Status statusColor="inProgress">Em andamento</Status>
-            </td>
-          </tr>
+          {cycles.map((cycle) => (
+            <tr key={cycle.id}>
+              <td>{cycle.task}</td>
+              <td>{cycle.minutesAmount}</td>
+              <td>{cycle.startDate.toDateString()}</td>
+              <td>
+                {cycle.status === 'completed' && (
+                  <Status statusColor="completed">Concluído</Status>
+                )}
+                {cycle.status === 'inProgress' && (
+                  <Status statusColor="inProgress">Em Progresso</Status>
+                )}
+                {cycle.status === 'interrupted' && (
+                  <Status statusColor="interrupted">Interrompido</Status>
+                )}
+              </td>
+            </tr>
+          ))}
         </tbody>
       </StyledTable>
     </HistoryContainer>
